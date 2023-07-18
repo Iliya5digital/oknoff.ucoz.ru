@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html><html><head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>Вход в панель управления</title>
+	<link rel="stylesheet" href="../.s/src/basepanel.css">
+<link rel="stylesheet" href="../.s/src/layer5.css">
+<link rel="stylesheet" href="../.s/src/panel5.css">
+<script src="../.s/src/jquery-3.6.0.min.js"></script>
+<script src="../.s/src/uwnd.min.js"></script>
+	<script>var uwnd_scale = {w:1, h:1 };
+		function selform(select, form = select.form) {
+			// !form && (form = select.form);
+			form.setAttribute('action', !!+select.value ? '/index/sub/' : '/panel/sub/');
+			form.a.value = !!+select.value ? 2 : 'dologin';
+			form.querySelectorAll('#lformDom, #lform2cp, #lfseccode').forEach (item => item.classList[ !!+select.value ? 'add' : 'remove' ]('hidden'));
+			form.querySelectorAll('#lform2front, #lform2fpass, #lformEmail').forEach (item => item.classList[ !!+select.value ? 'remove' : 'add' ]('hidden'));
+		}</script>
+	</head><body flex-align-center="" flex-center="" class="cp-login-body">
+	<div container="" class="cp-login-wrapper">
+	<div content="">
+	<div half-break-after="" text-center=""><b>Вход в панель управления</b></div>
+	
+	<form method="post" id="lform" action="/panel/sub/">
+		<table id="lform-table" border="0" width="100%">
+		<tr><td align="right">Куда войти:</td>
+		<td><select class="sw" name="t" onchange="selform(this);"><option value="0" selected="">Панель управления</option><option value="1">Сайт</option></select></td></tr>
+		<tr id="lformDom"><td align="right" class="label">Сайт:</td>
+			<td><input type="text" value="oknoff.ucoz.ru" class="sw bold" readonly=""></td></tr>
+		<tr id="lformEmail" class="hidden"><td align="right">uID (e-mail):</td>
+		<td><input type="text" name="user" value="" maxlength="50" class="sw bold"></td></tr>
+		<tr><td align="right">Пароль:</td>
+	<td><input type="password" name="password" class="sw" maxlength="32" size="20"></td></tr>
+		<input type="hidden" name="dnsc" value="D6!qnzOWq9Sy6!FT88qgi7;NBBhc^5j3;2PjcTFo">
+		<tr><td id="eMessage" align="right"></td>
+		<td id="eButton" flex-between="" flex-align-center="">
+			<button id="subbutlform" class="ubtn-default " type="submit" onclick="this.disabled = this.form.checkValidity(); this.form.requestSubmit(); return false;">Вход</button>
+			<span id="remind-wrap"><a class="remind" href="https://guid.uid.me/remind/">Забыл пароль</a></span>
+		</td></tr>
+		</table>
+
+		<input type="hidden" name="a" value="dologin" id="lforma">
+		<input type="hidden" name="ss" value="1">
+		<input type="hidden" name="uri" value="/panel/?a=stat;z=z">
+	</form></div></div>
+	</body></html>
+<!-- 0.43838 (s47) -->
